@@ -1,0 +1,23 @@
+{
+  "name": "liuxsen-cli",
+  "version": "0.0.1",
+  "description": "基于node的脚手架工具",
+  "main": "index.js",
+  "bin": {
+    "liuxsen-cli": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "liuxsen <948771968@qq.com> (http://github.com/liuxsen)",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.15.1",
+    "git-clone": "^0.1.0",
+    "handlebars": "^4.0.11",
+    "inquirer": "^6.0.0",
+    "log-symbols": "^2.2.0",
+    "ora": "^2.1.0"
+  }
+}
