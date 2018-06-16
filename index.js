@@ -56,9 +56,9 @@ program
                 spinner.text = '';
                 spinner.succeed();
                 // 删除git仓库文件夹
-                deleteall(path.resolve(__dirname, name, '.git'));
                 console.log(chalk.green('项目创建成功'));
               }
+              deleteall(path.resolve(__dirname, name, '.git'));
             } else {
               spinner.fail();
               console.log(chalk.red('项目创建失败'));
