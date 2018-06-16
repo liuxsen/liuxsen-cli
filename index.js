@@ -8,10 +8,12 @@ const fs = require('fs');
 const chalk = require('chalk');
 const path = require('path');
 
+const config = require('./package.json');
+
 const { deleteall } = require('./utils/fs-utils');
 
 program
-  .version('1.0.0', '-v, --version')
+  .version(config.version, '-v, --version')
   .command('init <name> <branch>')
   .action((name, branch) => {
     if (fs.existsSync(name)) {
@@ -58,7 +60,7 @@ program
                 // 删除git仓库文件夹
                 console.log(chalk.green('项目创建成功'));
               }
-              deleteall(path.resolve(__dirname, name, '.git'));
+              deleteall(path.resolve(name, '.git'));
             } else {
               spinner.fail();
               console.log(chalk.red('项目创建失败'));

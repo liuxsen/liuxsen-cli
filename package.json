@@ -1,6 +1,6 @@
 {
   "name": "liuxsen-cli",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "基于node的脚手架工具",
   "main": "index.js",
   "bin": {
