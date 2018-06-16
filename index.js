@@ -6,11 +6,14 @@ const handlebars = require('handlebars');
 const ora = require('ora');
 const fs = require('fs');
 const chalk = require('chalk');
+const path = require('path');
+
+const { deleteall } = require('./utils/fs-utils');
 
 program
   .version('1.0.0', '-v, --version')
-  .command('init <name>')
-  .action(name => {
+  .command('init <name> <branch>')
+  .action((name, branch) => {
     if (fs.existsSync(name)) {
       console.log(chalk.red('项目已经存在'));
       return;
@@ -34,7 +37,10 @@ program
         download(
           'https://github.com/liuxsen/cli-template',
           `${name}`,
-          { git: 'git' },
+          {
+            git: 'git',
+            checkout: branch || 'master'
+          },
           err => {
             if (!err) {
               const meta = {
@@ -49,6 +55,8 @@ program
                 fs.writeFileSync(fileName, result);
                 spinner.text = '';
                 spinner.succeed();
+                // 删除git仓库文件夹
+                deleteall(path.resolve(__dirname, name, '.git'));
                 console.log(chalk.green('项目创建成功'));
               }
             } else {
